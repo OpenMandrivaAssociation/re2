@@ -73,3 +73,13 @@ rm -rf %{buildroot}
 %{_libdir}/*.so
 %{_includedir}/%{name}/
 
+
+
+%changelog
+* Wed Jul 27 2011 Oden Eriksson <oeriksson@mandriva.com> 0-1mdv2012.0
++ Revision: 691908
+- import re2
+
+
+* Wed Jul 27 2011 Oden Eriksson <oeriksson@mandriva.com> 0-1mdv2010.2
+- initial Mandriva package
