@@ -1,18 +1,16 @@
 %define	major 0
 %define	libname %mklibname re2_ %{major}
 %define develname %mklibname re2 -d
+%define oddname 2016-03-01
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	0
-Release:	2
+Version:	2016.03.01
+Release:	1
 License:	BSD like
 Group:		System/Libraries
-URL:		http://code.google.com/p/re2/
-# hg clone https://re2.googlecode.com/hg re2
-Source0:	re2.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-
+URL:		https://github.com/google/re2/releases
+Source0:	https://github.com/google/re2/archive/%{oddname}.tar.gz
 %description
 RE2 is a fast, safe, thread-friendly alternative to backtracking regular
 expression engines like those used in PCRE, Perl, and Python.
@@ -38,48 +36,22 @@ expression engines like those used in PCRE, Perl, and Python.
 This package contains the development files for re2.
 
 %prep
-
-%setup -q -n re2
+%setup -q -n re2-%{oddname}
 
 %build
-
-%make CXXFLAGS="%{optflags} -pthread"
+export CXXFLAGS="%{optflags} -pthread -std=c++11"
+export LDFLAGS="%{ldflags} -pthread"
+%make CC=%{__cc} CXX=%{__cxx}
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std prefix=%{_prefix} libdir=%{_libdir}
-
 rm -f %{buildroot}%{_libdir}/*.a
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
-
 %files -n %{libname}
-%defattr(-,root,root,-)
-%doc LICENSE
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root,-)
+%doc LICENSE
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}/
-
-
-
-%changelog
-* Wed Jul 27 2011 Oden Eriksson <oeriksson@mandriva.com> 0-1mdv2012.0
-+ Revision: 691908
-- import re2
-
-
-* Wed Jul 27 2011 Oden Eriksson <oeriksson@mandriva.com> 0-1mdv2010.2
-- initial Mandriva package
