@@ -1,11 +1,11 @@
 %define	major 0
 %define	libname %mklibname re2_ %{major}
 %define develname %mklibname re2 -d
-%define oddname 2016-03-01
+%define oddname %(echo %{version} |sed -e 's,\\.,-,g')
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2016.03.01
+Version:	2017.06.01
 Release:	1
 License:	BSD like
 Group:		System/Libraries
