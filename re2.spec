@@ -5,7 +5,7 @@
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2017.06.01
+Version:	2017.07.01
 Release:	1
 License:	BSD like
 Group:		System/Libraries
@@ -26,8 +26,8 @@ expression engines like those used in PCRE, Perl, and Python.
 %package -n	%{develname}
 Summary:	Development files for the re2 library
 Group:		Development/C++
-Requires:	%{libname} >= %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
 
 %description -n	%{develname}
 RE2 is a fast, safe, thread-friendly alternative to backtracking regular
