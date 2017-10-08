@@ -5,7 +5,7 @@
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2017.07.01
+Version:	2017.08.01
 Release:	1
 License:	BSD like
 Group:		System/Libraries
@@ -39,7 +39,7 @@ This package contains the development files for re2.
 %setup -q -n re2-%{oddname}
 
 %build
-export CXXFLAGS="%{optflags} -pthread -std=c++11"
+export CXXFLAGS="%{optflags} -pthread -std=c++14"
 export LDFLAGS="%{ldflags} -pthread"
 %make CC=%{__cc} CXX=%{__cxx}
 
