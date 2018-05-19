@@ -5,7 +5,7 @@
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2017.08.01
+Version:	2018.04.01
 Release:	1
 License:	BSD like
 Group:		System/Libraries
