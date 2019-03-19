@@ -2,11 +2,13 @@
 %define libname %mklibname re2_ %{major}
 %define develname %mklibname re2 -d
 %define oddname %(echo %{version} |sed -e 's,\\.,-,g')
+# (tpg) optimize it a bit
+%global optflags %{optflags} -O3
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2018.09.01
-Release:	2
+Version:	2019.03.01
+Release:	1
 License:	BSD like
 Group:		System/Libraries
 URL:		https://github.com/google/re2/releases
