@@ -12,7 +12,7 @@ Release:	1
 License:	BSD like
 Group:		System/Libraries
 URL:		https://github.com/google/re2/releases
-Source0:	https://github.com/google/re2/archive/%{oddname}.tar.gz
+Source0:	https://github.com/google/re2/archive/%{name}-%{oddname}.tar.gz
 %description
 RE2 is a fast, safe, thread-friendly alternative to backtracking regular
 expression engines like those used in PCRE, Perl, and Python.
