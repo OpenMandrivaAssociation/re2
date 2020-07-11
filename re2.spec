@@ -1,18 +1,18 @@
-%define major 0
+%define major 8
 %define libname %mklibname re2_ %{major}
 %define develname %mklibname re2 -d
-%define oddname %(echo %{version} |sed -e 's,\\.,-,g')
+%define oddver %(echo %{version} |sed -e 's,\\.,-,g')
 # (tpg) optimize it a bit
 %global optflags %{optflags} -O3
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2019.12.01
+Version:	2020.07.06
 Release:	1
 License:	BSD like
 Group:		System/Libraries
 URL:		https://github.com/google/re2/releases
-Source0:	https://github.com/google/re2/archive/%{name}-%{oddname}.tar.gz
+Source0:	https://github.com/google/re2/archive/%{oddver}/%{name}-%{oddver}.tar.gz
 %ifarch riscv64
 BuildRequires:	atomic-devel
 %endif
@@ -42,11 +42,16 @@ expression engines like those used in PCRE, Perl, and Python.
 This package contains the development files for re2.
 
 %prep
-%autosetup -n re2-%{oddname} -p1
+%autosetup -n re2-%{oddver} -p1
 
 %build
-export CXXFLAGS="%{optflags} -pthread -std=c++14"
+export CXXFLAGS="%{optflags} -pthread"
 export LDFLAGS="%{ldflags} -pthread"
+# Don't hardcode 11 -- modern compilers default to
+# something a lot higher and 11 is just the minimum
+# required.
+sed -i -e 's,-std=c++11 ,,g' Makefile re2.pc
+sed -i -e 's,CMAKE_CXX_STANDARD 11,CMAKE_CXX_STANDARD 17,g' CMakeLists.txt
 %make_build CC=%{__cc} CXX=%{__cxx}
 
 %install
