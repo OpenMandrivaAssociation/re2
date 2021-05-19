@@ -1,4 +1,4 @@
-%define major 8
+%define major 9
 %define libname %mklibname re2_ %{major}
 %define develname %mklibname re2 -d
 %define oddver %(echo %{version} |sed -e 's,\\.,-,g')
