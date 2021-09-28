@@ -7,7 +7,7 @@
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2021.06.01
+Version:	2021.09.01
 Release:	1
 License:	BSD like
 Group:		System/Libraries
@@ -45,8 +45,9 @@ This package contains the development files for re2.
 %autosetup -n re2-%{oddver} -p1
 
 %build
+
 export CXXFLAGS="%{optflags} -pthread"
-export LDFLAGS="%{ldflags} -pthread"
+export LDFLAGS="%{build_ldflags} -pthread"
 # Don't hardcode 11 -- modern compilers default to
 # something a lot higher and 11 is just the minimum
 # required.
