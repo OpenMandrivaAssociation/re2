@@ -1,5 +1,6 @@
 %define major 11
-%define libname %mklibname re2_ %{major}
+%define libname %mklibname re2
+%define oldlibname %mklibname re2_ %{major}
 %define develname %mklibname re2 -d
 %define oddver %(echo %{version} |sed -e 's,\\.,-,g')
 # (tpg) optimize it a bit
@@ -8,7 +9,7 @@
 Summary:	An efficient, principled regular expression library
 Name:		re2
 Version:	2023.07.01
-Release:	1
+Release:	2
 License:	BSD like
 Group:		System/Libraries
 URL:		https://github.com/google/re2/releases
@@ -25,6 +26,7 @@ expression engines like those used in PCRE, Perl, and Python.
 %package -n %{libname}
 Summary:	An efficient, principled regular expression library
 Group:		System/Libraries
+%rename %{oldlibname}
 
 %description -n %{libname}
 RE2 is a fast, safe, thread-friendly alternative to backtracking regular
