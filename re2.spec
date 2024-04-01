@@ -8,8 +8,8 @@
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2024.03.01
-Release:	2
+Version:	2024.04.01
+Release:	1
 License:	BSD like
 Group:		System/Libraries
 URL:		https://github.com/google/re2/releases
