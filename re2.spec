@@ -8,7 +8,7 @@
 
 Summary:	An efficient, principled regular expression library
 Name:		re2
-Version:	2024.06.01
+Version:	2024.07.02
 Release:	1
 License:	BSD like
 Group:		System/Libraries
