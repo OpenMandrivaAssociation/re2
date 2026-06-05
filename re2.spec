@@ -9,7 +9,7 @@
 Summary:	An efficient, principled regular expression library
 Name:		re2
 Version:	2025.11.05
-Release:	2
+Release:	3
 License:	BSD like
 Group:		System/Libraries
 URL:		https://github.com/google/re2/releases
